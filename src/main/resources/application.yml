@@ -1,0 +1,29 @@
+server:
+  port: 8989
+  servlet:
+    context-path: /cmfz
+    jsp:
+      init-parameters:
+        development: true
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  datasource:
+    type: org.apache.commons.dbcp.BasicDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/ddd?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+  redis:
+    host: 192.168.181.133
+    port: 6379
+mybatis:
+  type-aliases-package: com.baizhi.entity
+  mapper-locations: classpath:com/baizhi/mapper/*Mapper.xml
