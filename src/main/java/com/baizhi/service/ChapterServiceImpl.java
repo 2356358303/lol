@@ -1,5 +1,6 @@
 package com.baizhi.service;
 
+import com.baizhi.annotation.RedisCache;
 import com.baizhi.dao.ChapterDao;
 import com.baizhi.entity.Chapter;
 import org.apache.ibatis.session.RowBounds;
@@ -16,6 +17,7 @@ public class ChapterServiceImpl implements ChapterService{
     @Autowired
     private ChapterDao chapterDao;
     @Override
+    @RedisCache
     public Map<String, Object> selectAllChapter(String albumId,Integer page, Integer rows) {
         HashMap<String, Object> map = new HashMap<>();
         Chapter chapter = new Chapter();

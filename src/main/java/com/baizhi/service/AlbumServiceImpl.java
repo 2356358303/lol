@@ -1,5 +1,6 @@
 package com.baizhi.service;
 
+import com.baizhi.annotation.RedisCache;
 import com.baizhi.dao.AlbumDao;
 import com.baizhi.entity.Album;
 import org.apache.ibatis.session.RowBounds;
@@ -15,6 +16,7 @@ public class AlbumServiceImpl implements AlbumService {
     @Autowired
     private AlbumDao albumDao;
     @Override
+    @RedisCache
     public Map<String, Object> selectAllAlbum(Integer page, Integer rows) {
         Map<String,Object>map=new HashMap<>();
         Album album=new Album();

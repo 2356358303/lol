@@ -1,19 +1,23 @@
 package com.baizhi.service;
 
+import com.baizhi.annotation.RedisCache;
 import com.baizhi.dao.ArticleDao;
 import com.baizhi.entity.Article;
 import io.goeasy.GoEasy;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
 @Service
+@Transactional
 public class ArticleServiceIMpl implements ArticleService {
     @Autowired
     private ArticleDao articleDao;
     @Override
+    @RedisCache
     public Map<String, Object> selectAllArticle(Integer page, Integer rows) {
         Map<String, Object> map = new HashMap<>();
         Article article =new Article();
