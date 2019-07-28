@@ -14,8 +14,8 @@ import redis.clients.jedis.Jedis;
 import java.lang.reflect.Method;
 import java.util.Set;
 
-@Configuration//声明配置类的注解
-@Aspect //面向切面编程 当前类是一个切面容器读取
+//@Configuration//声明配置类的注解
+//@Aspect //面向切面编程 当前类是一个切面容器读取
 public class RedisCache {
     @Autowired//自动装配bean
     private Jedis jedis;
@@ -80,7 +80,6 @@ public class RedisCache {
     public void after(JoinPoint joinPoint){
 //        获取将要执行的方法     banner add edit del
         String className = joinPoint.getTarget().getClass().getName();
-        System.out.println(className);
 //        删除相关的缓存       banner
         Set<String> keys = jedis.keys("*");
         for (String key : keys) {
